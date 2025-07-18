@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahrul Off Cam</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .emoji {
+      font-size: 3em;
+      margin: 10px;
+    }
+
+    .camera-container {
+      margin-top: 40px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 500px;
+      border: 5px solid red;
+      border-radius: 15px;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Buka Kameranya Sahrul! Off cam terus <span class="emoji">😠📷</span></h1>
+
+  <div class="camera-container">
+    <video id="camera" autoplay></video><br/>
+    <button onclick="bukaKamera()">Buka Kamera</button>
+  </div>
+
+  <script>
+    function bukaKamera() {
+      const video = document.getElementById('camera');
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then((stream) => {
+          video.srcObject = stream;
+          video.style.display = 'block';
+        })
+        .catch((error) => {
+          alert("Tidak bisa mengakses kamera: " + error.message);
+        });
+    }
+  </script>
+
+</body>
+</html>
